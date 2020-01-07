@@ -54,12 +54,12 @@ np_interface_y = np.loadtxt(f_name_interface,
                           usecols=(1)
                           )
 
-plt.quiver(np_crd_x,np_crd_y,np_v_x,np_v_y,angles='xy',scale_units='xy',scale=1)
+plt.quiver(np_crd_x,np_crd_y,np_v_x,np_v_y,angles='xy',scale_units='xy',scale=None, width=0.005)
 for i in range(4*nc):
     if i == 4*nc - 1:
-        plt.plot([np_interface_x[int(i+interface_start)], np_interface_x[int(interface_start)]], [np_interface_y[int(i+interface_start)], np_interface_y[int(interface_start)]],'k-', lw=0.7)
+        plt.plot([np_interface_x[int(i+interface_start)], np_interface_x[int(interface_start)]], [np_interface_y[int(i+interface_start)], np_interface_y[int(interface_start)]],'m-.', lw=1.0)
     else:
-        plt.plot([np_interface_x[int(i+interface_start)], np_interface_x[int(i+1+interface_start)]], [np_interface_y[int(i+interface_start)], np_interface_y[int(i+1+interface_start)]],'k-', lw=0.7)
+        plt.plot([np_interface_x[int(i+interface_start)], np_interface_x[int(i+1+interface_start)]], [np_interface_y[int(i+interface_start)], np_interface_y[int(i+1+interface_start)]],'m-.', lw=1.0)
 
 plt.axes().set_aspect('equal')
 #plt.savefig("sample.ps",format = 'ps')
