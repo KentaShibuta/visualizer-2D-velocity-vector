@@ -14,15 +14,15 @@ plt.rcParams["mathtext.fontset"] = "stix" # これを入れておくと，斜体
 plt.rcParams['xtick.direction'] = 'in' # x axis in
 plt.rcParams['ytick.direction'] = 'in' # y axis in
 plt.rcParams["font.size"] = 14
-nc = 30
+nc = 6
 rl1 = 10
-rl2 = 20
+rl2 = 10
 
 nc1 = nc+1
 nl = rl1+1
 
 
-interface_start = (nc1 * nc1) + 4 * nc * (nl-1)
+#interface_start = (nc1 * nc1) + 4 * nc * (nl-1)
 
 print('Input crd file name >>>>')
 f_name_crd = input().rstrip() # 可視化するファイル名
@@ -68,7 +68,7 @@ np_interface_y = np.loadtxt(f_name_interface,
                           )
 plt.xlabel('$\it{x}$'+' [m]')
 plt.ylabel('$\it{y}$'+' [m]')
-plt.quiver(np_crd_x,np_crd_y,np_v_x,np_v_y,angles='xy',scale_units='xy',scale=None, width=0.005)
+plt.quiver(np_crd_x,np_crd_y,np_v_x,np_v_y,angles='xy',scale_units='xy',scale=None, width=0.01)
 '''
 for i in range(4*nc):
     if i == 4*nc - 1:
@@ -81,9 +81,11 @@ for i in range(4*nc):
         plt.plot([np_interface_x[i], np_interface_x[0]], [np_interface_y[i], np_interface_y[0]],'m-.', lw=1.0, label = "Interface")
     else:
         plt.plot([np_interface_x[i], np_interface_x[i+1]], [np_interface_y[i], np_interface_y[i+1]],'m-.', lw=1.0)
-plt.legend(bbox_to_anchor=(1, 1), loc='upper right', borderaxespad=0.1,labelspacing=0.1,fontsize=14)
+plt.xlim(-0.3,0)
+plt.ylim(-0.5,0.25)
+#plt.legend(bbox_to_anchor=(1, 1), loc='upper right', borderaxespad=0.1,labelspacing=0.1,fontsize=14)
 plt.tight_layout()
 plt.axes().set_aspect('equal')
-plt.savefig("sample.svg",format = 'svg')
+plt.savefig("20200128_v_6668_2.png",format = 'png', dpi=1000)
 #plt.savefig("sample.png",format = 'png', dpi=1000)
 plt.show()
